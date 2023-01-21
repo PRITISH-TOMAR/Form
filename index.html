@@ -13,20 +13,20 @@
     <div class="container">
         <h1>Sign-up</h1>
 <div class="form signup">
-<form action="mailto:pritishtomar2004@gmail.com" >
+<form action="mailto:pritishtomar2004@gmail.com" method="post" enctype="text/plain" >
 <div class="input">
-<input type="text" required="required"><span><i class="fa-regular fa-user"> |</i>username</span>
+<input type="text" id="name" name="Name" required="required"><span><i class="fa-regular fa-user"> |</i>username</span>
 </div>
 <div class="input">
-<input type="text" required="required"><span><i class="fa-regular fa-envelope"> |</i>E-mail</span>
+<input type="text" id="Email" name="Email" required="required"><span><i class="fa-regular fa-envelope"> |</i>E-mail</span>
 </div>
 <div class="input">
-<input type="number" required="required"><span><i class="fa-solid fa-phone">| </i>contact No.</span>
+<input type="number" id="Phone" name="Phone" required="required"><span><i class="fa-solid fa-phone">| </i>contact No.</span>
 </div>
-<div class="input">
-<input type="password" required="required"><span><i class="fa-sharp fa-solid fa-lock"> |</i>password</span>
+<div class="input pass">
+<input type="password" id="Pass" name="Pass" required="required"><span><i class="fa-sharp fa-solid fa-lock"> |</i>password</span>
 </div>
-<div class="input">
+<div class="input conf">
 <input type="password" required="required"><span><i class="fa-solid fa-key"> |</i>confirm password</span>
 </div>
 <div class="input sub">
@@ -64,12 +64,24 @@
     let form=document.querySelector('form');  
     let create=document.querySelector('.create');  
     let container=document.querySelector('.container');  
+    let password=document.querySelector('.pass');  
+    let confirm=document.querySelector('.conf');  
 
     login.onclick=function(){
         container.classList.add('signinForm');
     }
     create.onclick=function(){
         container.classList.remove('signinForm');
+    }
+
+    
+        
+    sub.onclick=function validate(){
+        if((password.value)!=(confirm.value)){
+            alert("Password and confirm password do not match !");
+            return false;
+        }
+        return true;
     }
      
 </script>
