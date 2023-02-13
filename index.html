@@ -23,14 +23,15 @@
 <div class="input">
 <input type="number" id="Phone" name="Phone" required="required"><span><i class="fa-solid fa-phone">| </i>contact No.</span>
 </div>
-<div class="input pass">
-<input type="password" id="Pass" name="Pass" required="required"><span><i class="fa-sharp fa-solid fa-lock"> |</i>password</span>
+<div class="input ">
+<input type="password" id="Pass" name="Pass" size="=20"      required="required" class="pass"  ><span><i class="fa-sharp fa-solid fa-lock"> |</i>password</span>
+
 </div>
-<div class="input conf">
-<input type="password" required="required"><span><i class="fa-solid fa-key"> |</i>confirm password</span>
+<div class="input ">
+<input type="password" required="required" class="conf " onclick="green()"><span><i class="fa-solid fa-key"> |</i>confirm password</span>
 </div>
 <div class="input sub">
-    <input type="submit" value="Create Account">
+    <input type="submit" value="Create Account" onclick="return validate()">
 </div>
 </form>
 <p>Already a member ? <a href="#" class="login">Login</a></p>
@@ -65,8 +66,9 @@
     let create=document.querySelector('.create');  
     let container=document.querySelector('.container');  
     let password=document.querySelector('.pass');  
-    let confirm=document.querySelector('.conf');  
-
+    let confirmed=document.querySelector('.conf');  
+var red="#ff6666";
+var transparent="green"
     login.onclick=function(){
         container.classList.add('signinForm');
     }
@@ -74,16 +76,38 @@
         container.classList.remove('signinForm');
     }
 
-    
-        
-    sub.onclick=function validate(){
-        if((password.value)!=(confirm.value)){
-            alert("Password and confirm password do not match !");
-            return false;
-        }
-        return true;
+    function green(){
+        if(password.value.length >8&&password.value.length<15) {  
+            password.style.backgroundColor=transparent; 
+            
+            return true;  
+        }  
     }
+    
+    function validate(){
+        
+        if(password.value.length < 8||password.value.length>15) {  
+            password.style.backgroundColor=red; 
+   alert(" **Password length must be atleast 8 characters and atmost 15 characters!"); 
+   return false;  
+  }  
+  
+//   .........................
+
+if(((password.value)!=(confirmed.value))){
+    alert("Password and confirm password do not match !");
+    
+    return false;
+}
+else{
+    password.style.backgroundColor=transparent; 
+    
+}
+
+    return true;
      
+   
+    }
 </script>
 </body>
 </html>
